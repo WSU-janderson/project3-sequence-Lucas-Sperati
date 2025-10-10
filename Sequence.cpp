@@ -3,4 +3,6 @@
 
 using namespace std;
 
-//Sequence::Sequence(size_t sz = 0)
+Sequence::Sequence(size_t sz = 0) {
+
+}

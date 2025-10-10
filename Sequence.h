@@ -21,8 +21,25 @@ public://methods maybe
     Sequence& operator=(const Sequence& other);
     //deconstructor
     ~Sequence();
+    //todo end stuff idk if I need
 
+    //getters would go here if I need them, might not tho
 
+    //setters here, same boat
+
+    //methods
+    void push_back(const string& item);
+    void pop_back();
+    void insert(size_t position, const string& item);
+    void front();
+    void back();
+    void empty();
+    void size();
+    void clear();
+    void erase(size_t position);
+    void erase(size_t position, const string& count);
+
+    friend ostream& operator<<(ostream & os, const Sequence& s);
 };
 
 class SequenceNode {
