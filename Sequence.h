@@ -5,41 +5,43 @@ class Sequence {
 public: //variables maybe
     size_t sz; // size_t == unsigned long long
 
-public://methods maybe
+
+    //methods maybe
     //default constructor
     Sequence();
 
+    //todo added =0 here and removed it in .cpp
     //parameterized constructor
-    Sequence(size_t sz);
+    Sequence(size_t sz = 0);
 
-    //TODO no idea if I need this. Just following
-    //linked list example.
+
     //This all makes a deep copy of the Sequence
     //copy constructor - can make deep copy
-    Sequence(const Sequence& other);
+    Sequence(const Sequence& s);
     //assignment operator
-    Sequence& operator=(const Sequence& other);
+    Sequence& operator=(const Sequence& s);
     //deconstructor
     ~Sequence();
-    //todo end stuff idk if I need
 
-    //getters would go here if I need them, might not tho
+    //getters would go here if I need them, might nt tho
 
     //setters here, same boat
 
     //methods
-    void push_back(const string& item);
+    string& operator[] (size_t position);
+    void push_back(string& item);
     void pop_back();
-    void insert(size_t position, const string& item);
-    void front();
-    void back();
-    void empty();
-    void size();
+    void insert(size_t position, string item);
+    string front();
+    string back();
+    bool empty();
+    size_t size();
     void clear();
     void erase(size_t position);
-    void erase(size_t position, const string& count);
+    void erase(size_t position, size_t count);
 
     friend ostream& operator<<(ostream & os, const Sequence& s);
+
 };
 
 class SequenceNode {
