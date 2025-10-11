@@ -32,10 +32,10 @@ public: //variables maybe
     void push_back(string& item);
     void pop_back();
     void insert(size_t position, string item);
-    string front();
-    string back();
-    bool empty();
-    size_t size();
+    string front() const;
+    string back() const;
+    bool empty() const;
+    size_t size() const;
     void clear();
     void erase(size_t position);
     void erase(size_t position, size_t count);

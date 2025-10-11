@@ -35,19 +35,19 @@ void Sequence::insert(size_t position, std::string item) {
 
 }
 
-std::string Sequence::front() {
+std::string Sequence::front() const{
 
 }
 
-std::string Sequence::back() {
+std::string Sequence::back() const{
 
 }
 
-bool Sequence::empty() {
+bool Sequence::empty() const {
 
 }
 
-size_t Sequence::size() {
+size_t Sequence::size() const{
 
 }
 
