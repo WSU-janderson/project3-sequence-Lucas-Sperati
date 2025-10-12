@@ -17,13 +17,28 @@ Sequence::Sequence(size_t sz) {
     this->head = nullptr;
     this->tail = nullptr;
 
-    std::string nodeString;
-    head = new SequenceNode(nodeString);
-    SequenceNode* current = head;
+    //string for the current item that is between next and prev
+    std::string nodeItemString;
+    //makes the head node and initializes head with the nodeItemString
+    head = new SequenceNode(nodeItemString);
+    //sets currentNodePointer to the head
+    SequenceNode* currentNodePointer = head;
+
+
     //for loop that creates empty nodes of size sz
-    for (size_t i = 0; i < sz; i++) {
+    for (size_t i = 1; i < sz; i++) {
+        //makes new node
+        SequenceNode* nextNode = new SequenceNode(nodeItemString);
+        //sets the next pointer to the newly created nextNode
+        currentNodePointer->next = nextNode;
+        //sets the prev pointer to the previous node
+        nextNode->prev = currentNodePointer;
+        //sets currentNodePointer to the nextNode to be made
+        currentNodePointer = nextNode;
 
     }
+    //since by the end the currentNodePointer will be at the very end, it is set to tail
+    tail = currentNodePointer;
 }
 
 //deep copy of sequence
