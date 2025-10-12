@@ -5,8 +5,25 @@
 using namespace std;
 
 //makes empty sequence
+//default constructor
+Sequence::Sequence() {
+    sz = 0;
+    head = nullptr;
+    tail = nullptr;
+}
+//parameterized constructor
 Sequence::Sequence(size_t sz) {
     this->sz = sz;
+    this->head = nullptr;
+    this->tail = nullptr;
+
+    std::string nodeString;
+    head = new SequenceNode(nodeString);
+    SequenceNode* current = head;
+    //for loop that creates empty nodes of size sz
+    for (size_t i = 0; i < sz; i++) {
+
+    }
 }
 
 //deep copy of sequence
@@ -92,4 +109,5 @@ void Sequence::erase(size_t position) {
 void Sequence::erase(size_t position, size_t count) {
 
 }
+
 

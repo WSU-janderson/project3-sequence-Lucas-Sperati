@@ -1,12 +1,42 @@
 #include <string>
 using namespace std;
 
+class SequenceNode {
+public: //public so you don't need getters or setters
+
+    //pointer to next Node. If node is the tail, next is
+    //nullptr
+    SequenceNode* next;
+
+    //pointer to previous Node. If node is the head, prev
+    //is nullptr
+    SequenceNode* prev;
+
+    //the element being stored in the node
+    std::string item;
+
+
+    //default constructor that makes sure next and prev
+    //are set to nullptr
+    SequenceNode() : next(nullptr), prev(nullptr) {
+
+    }
+
+    //parameterized constructor, next and prev are set to
+    //nullptr and the node's element is set to the given
+    //value
+    SequenceNode(std::string& item) : next(nullptr), prev(nullptr), item(item) {
+
+    }
+
+};
+
 class Sequence {
 public: //variables maybe
     size_t sz; // size_t == unsigned long long
+    SequenceNode* head;  // points to first node in list
+    SequenceNode* tail; //points to last node in list
 
-
-    //methods maybe
     //default constructor
     Sequence();
 
@@ -47,32 +77,4 @@ public: //variables maybe
     }
 
 };
-//todo methods here
-class SequenceNode {
-    public: //public so you don't need getters or setters
 
-    //pointer to next Node. If node is the tail, next is
-    //nullptr
-    SequenceNode* next;
-
-    //pointer to previous Node. If node is the head, prev
-    //is nullptr
-    SequenceNode* prev;
-
-    //the element being stored in the node
-    std::string item;
-
-
-    //default constructor that makes sure next and prev
-    //are set to nullptr
-    SequenceNode() : next(nullptr), prev(nullptr) {
-
-    }
-
-    //parameterized constructor, next and prev are set to
-    //nullptr and the node's element is set to the given
-    //value
-    SequenceNode(std::string& item) : next(nullptr), prev(nullptr), item(item) {
-
-    }
-};

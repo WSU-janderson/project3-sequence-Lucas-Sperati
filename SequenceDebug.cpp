@@ -15,8 +15,8 @@ using namespace std;
 int main() {
     Sequence mySequence(5);
     mySequence[0] = "function";
-    mySequence[1] = "function";
-    mySequence[4] = "function";
+    mySequence[1] = "parameter";
+    mySequence[4] = "pointer";
     cout << mySequence[0] << endl;
 
     return 0;
