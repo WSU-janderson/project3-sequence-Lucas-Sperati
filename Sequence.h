@@ -40,10 +40,12 @@ public: //variables maybe
     void erase(size_t position);
     void erase(size_t position, size_t count);
 
-    friend ostream& operator<<(ostream & os, const Sequence& s);
+    friend ostream& operator<<(ostream& os, const Sequence& s) {
+
+    }
 
 };
-
+//todo methods here
 class SequenceNode {
     public: //public so you don't need getters or setters
 
@@ -61,10 +63,14 @@ class SequenceNode {
 
     //default constructor that makes sure next and prev
     //are set to nullptr
-    SequenceNode() : next(nullptr), prev(nullptr) {}
+    SequenceNode() : next(nullptr), prev(nullptr) {
+
+    }
 
     //parameterized constructor, next and prev are set to
     //nullptr and the node's element is set to the given
     //value
-    SequenceNode(std::string& item) : next(nullptr), prev(nullptr), item(item) {}
+    SequenceNode(std::string& item) : next(nullptr), prev(nullptr), item(item) {
+
+    }
 };

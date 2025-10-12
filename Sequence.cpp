@@ -1,18 +1,19 @@
 #include "Sequence.h"
 #include <iostream>
+#include <exception>
 
 using namespace std;
 
 Sequence::Sequence(size_t sz) {
-
+    this->sz = sz;
 }
 
 Sequence::Sequence(const Sequence& s) {
-
+    this->sz = s.sz;
 }
 
 Sequence::~Sequence() {
-
+    clearList();
 }
 
 Sequence& Sequence::operator=(const Sequence& s) {
@@ -62,4 +63,3 @@ void Sequence::erase(size_t position) {
 void Sequence::erase(size_t position, size_t count) {
 
 }
-
