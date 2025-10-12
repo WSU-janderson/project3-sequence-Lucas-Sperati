@@ -40,6 +40,8 @@ public: //variables maybe
     void erase(size_t position);
     void erase(size_t position, size_t count);
 
+    //todo
+    //Outputs all elements as a string to the output stream.
     friend ostream& operator<<(ostream& os, const Sequence& s) {
 
     }
