@@ -44,6 +44,44 @@ Sequence::Sequence(size_t sz) {
 //deep copy of sequence
 Sequence::Sequence(const Sequence& s) {
     this->sz = s.sz;
+
+    //makes new copy node, gets the item that's there, and sets it to the head of the deep copy
+    //s.head->item reads what's in the first node of the sequence. It took me forever to do this
+    //one line smh
+    head = new SequenceNode(s.head->item);
+    //sets the currentNodePointer to head and points to the copy's head
+    SequenceNode* currentNodePointer = head;
+    //sets originalNodePointer to the head and then sets it to the node next to it
+    //since head is already assigned to the first node and is already in the
+    //copy sequence
+    SequenceNode* originalNodePointer = s.head->next;
+
+    //while loop that adds each item in the original sequence to the copy
+    //clion generated the while loop and I just went with it
+
+    /*
+     * Original (originalNodePointer points to 2)
+     * 1 2 3
+     *
+     * Copy (currentNodePointer points to 1)
+     * 1 2 3
+     */
+
+    while (originalNodePointer != nullptr) {
+        //makes a new node and puts the item inside the originalNodePointer inside
+        SequenceNode* copyNode = new SequenceNode(originalNodePointer->item);
+        //sets the next pointer to the copyNode
+        currentNodePointer->next = copyNode;
+        //sets the prev pointer to the previous node
+        copyNode->prev = currentNodePointer;
+        //moves currentNodePointer to the new copyNode
+        currentNodePointer = copyNode;
+        //moves originalNodePointer to the next node
+        originalNodePointer = originalNodePointer->next;
+    }
+    //once the loop ends tail is set to currentNodePointer since that would be the last node
+    tail = currentNodePointer;
+
 }
 
 //deletes all the memory sequence used and releases memory
