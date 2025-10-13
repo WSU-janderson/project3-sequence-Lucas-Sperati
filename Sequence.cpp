@@ -165,16 +165,19 @@ void Sequence::pop_back() {
 void Sequence::insert(size_t position, std::string item) {
 
 }
-//todo
+
 //returns the first element in the sequence. If the sequence is empty
 //it throws an exception
 std::string Sequence::front() const{
-
+    //returns the item at the head
+    return head->item;
 }
-//todo
+
 //returns the last element in the sequence. If the sequence is empty
 //it throws an exception.
 std::string Sequence::back() const{
+    //returns the item at the tail
+    return tail->item;
 
 }
 //todo
