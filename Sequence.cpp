@@ -114,8 +114,6 @@ Sequence& Sequence::operator=(const Sequence& s) {
     return *this;
 }
 
-
-//todo
 //Satisfies (position >=0 && position <= last_index())
 //The return value is a reference to the item at index position in the sequence
 //Throws an exception if the position is outside the bounds of the sequence
@@ -130,10 +128,17 @@ std::string& Sequence::operator[] (size_t position) {
     }
     return currentNode->item;
 }
-//todo
+
 //the value of the item is appended to the sequence
 void Sequence::push_back(std::string& item) {
-
+    //sets currentNode equal to the item
+    SequenceNode* currentNode = new SequenceNode(item);
+    //sets tail's next slot equal to the currentNode
+    tail->next = currentNode;
+    //new node points back to old tail
+    currentNode->prev = tail;
+    //makes the currentNode the tail
+    tail = currentNode;
 }
 //todo
 //The item at the end of the sequence is deleted and the size of the sequence is
