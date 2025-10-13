@@ -113,12 +113,22 @@ Sequence& Sequence::operator=(const Sequence& s) {
     //think this just returns the new sequence?
     return *this;
 }
+
+
 //todo
 //Satisfies (position >=0 && position <= last_index())
 //The return value is a reference to the item at index position in the sequence
 //Throws an exception if the position is outside the bounds of the sequence
 std::string& Sequence::operator[] (size_t position) {
+    //sets currentNode equal to the head
+    SequenceNode* currentNode = head;
 
+    for (size_t i = 0; i < position; i++) {
+        //moves through the sequence until the position is found and currentNode
+        //is set to it
+        currentNode = currentNode->next;
+    }
+    return currentNode->item;
 }
 //todo
 //the value of the item is appended to the sequence
