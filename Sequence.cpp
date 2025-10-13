@@ -59,14 +59,6 @@ Sequence::Sequence(const Sequence& s) {
     //while loop that adds each item in the original sequence to the copy
     //clion generated the while loop and I just went with it
 
-    /*
-     * Original (originalNodePointer points to 2)
-     * 1 2 3
-     *
-     * Copy (currentNodePointer points to 1)
-     * 1 2 3
-     */
-
     while (originalNodePointer != nullptr) {
         //makes a new node and puts the item inside the originalNodePointer inside
         SequenceNode* copyNode = new SequenceNode(originalNodePointer->item);
@@ -88,31 +80,31 @@ Sequence::Sequence(const Sequence& s) {
 Sequence::~Sequence() {
     clear();
 }
-
+//todo
 //current sequence is released and replaced with the deep copy. A reference
 //to the copied sequence is returned (return *this;)
 Sequence& Sequence::operator=(const Sequence& s) {
 
 }
-
+//todo
 //Satisfies (position >=0 && position <= last_index())
 //The return value is a reference to the item at index position in the sequence
 //Throws an exception if the position is outside the bounds of the sequence
 std::string& Sequence::operator[] (size_t position) {
 
 }
-
+//todo
 //the value of the item is appended to the sequence
 void Sequence::push_back(std::string& item) {
 
 }
-
+//todo
 //The item at the end of the sequence is deleted and the size of the sequence is
 //reduced by one. If the sequence was empty it throws an exception
 void Sequence::pop_back() {
 
 }
-
+//todo
 //The position satisfies (position >=0 && position <= last_index())
 //The value of the item is inserted at position and the size of the
 //sequence is increased by one. Throws an exception if the position
@@ -120,24 +112,24 @@ void Sequence::pop_back() {
 void Sequence::insert(size_t position, std::string item) {
 
 }
-
+//todo
 //returns the first element in the sequence. If the sequence is empty
 //it throws an exception
 std::string Sequence::front() const{
 
 }
-
+//todo
 //returns the last element in the sequence. If the sequence is empty
 //it throws an exception.
 std::string Sequence::back() const{
 
 }
-
+//todo
 //return true if the sequence has no elements, otherwise returns false
 bool Sequence::empty() const {
 
 }
-
+//todo
 //returns the number of elements in the sequence
 size_t Sequence::size() const{
 
@@ -147,15 +139,32 @@ size_t Sequence::size() const{
 //the sequence is released, resetting the sequence to an empty state that
 //can have items re-inserted
 void Sequence::clear() {
+    //sets currentNode to the head of the sequence
+    SequenceNode* currentNode = head;
+    //whileloop that goes through the node. clion generated it again
+    while (currentNode != nullptr) {
+        //sets nextNode next element after currentNode so currentNode can be deleted
+        SequenceNode* nextNode = currentNode->next; //clion generated. think it works from what i've googled
+        //deletes what's in currentNode
+        delete currentNode; //clion generated
+        //moves currentNode to the nextNode
+        currentNode = nextNode; //clion generated
+    }
+    //resets everything at the end
+    head = nullptr;
+    tail = nullptr;
+    sz = 0;
 
+    //literally clion just autofilled the entire method. It's not ai and from what i've googled I think
+    //it works probably. Clion ain't ai either so im keeping it.
 }
-
+//todo
 //The item at position is removed and the memory is released
 //If it's called at an invalid position it throws an exception
 void Sequence::erase(size_t position) {
 
 }
-
+//todo
 //The items in the sequence at (position ... (position + count - 1))
 //are deleted and their memory is released. If called with an invalid position
 //and/or count it throws an exception
