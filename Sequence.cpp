@@ -139,12 +139,23 @@ void Sequence::push_back(std::string& item) {
     currentNode->prev = tail;
     //makes the currentNode the tail
     tail = currentNode;
+    //increases size by one
+    sz += 1;
 }
-//todo
+
 //The item at the end of the sequence is deleted and the size of the sequence is
 //reduced by one. If the sequence was empty it throws an exception
 void Sequence::pop_back() {
-
+    //sets currentNode to the tail
+    SequenceNode* currentNode = tail;
+    //moves the tail back one node
+    tail = tail->prev;
+    //sets the next node to the new tail to nullptr
+    tail->next = nullptr;
+    //removes currentNode
+    delete currentNode;
+    //decreases size by one
+    sz -= 1;
 }
 //todo
 //The position satisfies (position >=0 && position <= last_index())
