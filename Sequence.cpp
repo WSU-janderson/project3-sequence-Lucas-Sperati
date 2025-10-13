@@ -57,7 +57,7 @@ Sequence::Sequence(const Sequence& s) {
     SequenceNode* originalNodePointer = s.head->next;
 
     //while loop that adds each item in the original sequence to the copy
-    //clion generated the while loop and I just went with it
+    // generated the while loop and I just went with it
 
     while (originalNodePointer != nullptr) {
         //makes a new node and puts the item inside the originalNodePointer inside
@@ -157,12 +157,56 @@ void Sequence::pop_back() {
     //decreases size by one
     sz -= 1;
 }
-//todo
+
 //The position satisfies (position >=0 && position <= last_index())
 //The value of the item is inserted at position and the size of the
 //sequence is increased by one. Throws an exception if the position
 //is outside the bounds of the sequence
 void Sequence::insert(size_t position, std::string item) {
+    SequenceNode* currentNode = head;
+
+    //tail case
+    //if the position is at the tail
+    if (position == sz) {
+        //just does push_back on the new node
+        this->push_back(item);
+
+    }
+    //head case
+    //if the item is being inserted at the tail
+    else if (position == 0) {
+        SequenceNode* newNode = new SequenceNode(item);
+        //sets the prev of current node to new node
+        currentNode->prev = newNode;
+        //sets new node next to the current node
+        newNode->next = currentNode;
+        //sets the head to the newNode
+        head = newNode;
+        //increases size
+        sz += 1;
+    }
+    else{
+        //loops to position
+        //(-1 because you're placing new node at position 5 you need to go forward 4 times)
+        for (size_t i = 0; i < position - 1; i++) {
+            currentNode = currentNode->next;
+        }
+        //node for the newly made Node
+        SequenceNode* newNode = new SequenceNode(item);
+        //node for the next node
+        SequenceNode* nextNode;
+        //sets nextNode to the node after current
+        nextNode = currentNode->next;
+        //sets currentNode next to new
+        currentNode->next = newNode;
+        //sets nextNode's prev to newNode
+        nextNode->prev = newNode;
+        //sets nextNode prev to the current
+        newNode->prev = currentNode;
+        //sets new.next to nextNode
+        newNode->next = nextNode;
+        sz += 1;
+    }
 
 }
 
@@ -215,7 +259,7 @@ void Sequence::clear() {
     tail = nullptr;
     sz = 0;
 
-    //literally clion just autofilled the entire method. It's not ai and from what i've googled I think
+    //literally clion just autofilled the entire method. from what i've googled I think
     //it works probably. Clion ain't ai either so im keeping it.
 }
 //todo
