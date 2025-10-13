@@ -180,15 +180,19 @@ std::string Sequence::back() const{
     return tail->item;
 
 }
-//todo
+
 //return true if the sequence has no elements, otherwise returns false
 bool Sequence::empty() const {
-
+    if (sz == 0) {
+        return true;
+    }
+    return false;
 }
-//todo
+
+//todo don't know if this is correct
 //returns the number of elements in the sequence
 size_t Sequence::size() const{
-
+    return sz;
 }
 
 //All items in the sequence are deleted and the memory associated with
