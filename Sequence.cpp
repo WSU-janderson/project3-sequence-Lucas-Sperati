@@ -80,11 +80,38 @@ Sequence::Sequence(const Sequence& s) {
 Sequence::~Sequence() {
     clear();
 }
-//todo
+
 //current sequence is released and replaced with the deep copy. A reference
 //to the copied sequence is returned (return *this;)
 Sequence& Sequence::operator=(const Sequence& s) {
+    //removes the current sequence
+    clear();
+    //sets the size to the deep copies size
+    this->sz = s.sz;//autofilled by clion
+    //sets the head of the main sequence to the head of the item in the copy
+    this->head = new SequenceNode(s.head->item);//autofilled by clion
+    //sets mainNodePointer to the head to the copy of the deep
+    SequenceNode* mainNodePointer = head;//autofilled by clion
+    //sets copyNodePointer to the next node in the deep sequence
+    SequenceNode* deepNodePointer = s.head->next;//autofilled by clion
 
+    //while the deepNodePointer isn't null so a cop can be made
+    while (deepNodePointer != nullptr) {//autofilled by clion
+        //sets the next item in deepNodePointer to newCopyNode
+        SequenceNode* newCopyNode = new SequenceNode(deepNodePointer->item);//autofilled by clion
+        //sets the next pointer to the newCopyNode
+        mainNodePointer->next = newCopyNode;//autofilled by clion
+        //sets the prev pointer to the mainNodePointer
+        newCopyNode->prev = mainNodePointer;//autofilled by clion
+        //sets mainNodePointer to newCopyNode
+        mainNodePointer = newCopyNode;
+        //moves the deepNodePointer forward one
+        deepNodePointer = deepNodePointer->next;
+    }
+    //sets tail to the mainNodePointer since that's where it would be
+    tail = mainNodePointer;
+    //think this just returns the new sequence?
+    return *this;
 }
 //todo
 //Satisfies (position >=0 && position <= last_index())
