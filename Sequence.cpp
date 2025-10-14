@@ -261,7 +261,7 @@ void Sequence::clear() {
     //literally clion just autofilled the entire method. from what i've googled I think
     //it works probably. Clion ain't ai either so im keeping it.
 }
-//todo
+
 //The item at position is removed and the memory is released
 //If it's called at an invalid position it throws an exception
 void Sequence::erase(size_t position) {
@@ -294,10 +294,14 @@ void Sequence::erase(size_t position) {
 //are deleted and their memory is released. If called with an invalid position
 //and/or count it throws an exception
 void Sequence::erase(size_t position, size_t count) {
-
+    //goes through each of the counts and then erases the node at the position
+    /*A B C D (node)  (pos = 1, count = 2)
+     *0 1 2 3 (position)
+     *Start at position B
+     *Removes B and C
+     *A points to D
+     */
+    for (size_t i = 0; i < count; i++) {
+        erase(position + i);
+    }
 }
-
-
-/*
- *
- */
