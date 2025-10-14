@@ -1,3 +1,4 @@
+#include <ostream>
 #include <string>
 using namespace std;
 
@@ -72,9 +73,20 @@ public: //variables maybe
 
     //todo
     //Outputs all elements as a string to the output stream.
+    //outputs whatever is in here when you call cout << mySequence << endl"
     friend ostream& operator<<(ostream& os, const Sequence& s) {
-
+        //variable to hold the nodes
+        SequenceNode* node = s.head;
+        //while the node is valid
+        while (node != nullptr) {
+            //adds the item to the os stream
+            os << node->item << " ";
+            //moves to next node
+            node = node->next;
+        }
+        os << endl;
     }
+
 
 };
 

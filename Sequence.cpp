@@ -289,7 +289,7 @@ void Sequence::erase(size_t position) {
     delete currentNode;
     sz -= 1;
 }
-//todo
+
 //The items in the sequence at (position ... (position + count - 1))
 //are deleted and their memory is released. If called with an invalid position
 //and/or count it throws an exception

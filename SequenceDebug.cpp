@@ -17,7 +17,7 @@ int main() {
     mySequence[0] = "function";
     mySequence[1] = "parameter";
     mySequence[4] = "pointer";
-    cout << mySequence[0] << endl;
+    cout << mySequence << endl;
 
     return 0;
 }
