@@ -233,7 +233,6 @@ bool Sequence::empty() const {
     return false;
 }
 
-//todo don't know if this is correct
 //returns the number of elements in the sequence
 size_t Sequence::size() const{
     return sz;
@@ -266,7 +265,29 @@ void Sequence::clear() {
 //The item at position is removed and the memory is released
 //If it's called at an invalid position it throws an exception
 void Sequence::erase(size_t position) {
-
+    SequenceNode* currentNode = head;
+    //for loop to get the node at the position
+    for (size_t i = 0; i < position; i++) {
+        currentNode = currentNode->next;
+    }
+    //if deleting the head
+    if (position == 0 && sz > 1) {
+        head = currentNode->next;
+    }
+    //if not deleting head
+    else if (position > 0 && position < sz) {
+        //sets the prevNode to the previous of currentNode
+        SequenceNode* prevNode = currentNode->prev;
+        //sets the next of prevNode to the next of currentNode
+        prevNode->next = currentNode->next;
+        //if it's deleting tail
+        if (prevNode->next == nullptr) {
+            tail = prevNode;
+        }
+    }
+    //deletes the currentNode to be deleted
+    delete currentNode;
+    sz -= 1;
 }
 //todo
 //The items in the sequence at (position ... (position + count - 1))
@@ -277,3 +298,6 @@ void Sequence::erase(size_t position, size_t count) {
 }
 
 
+/*
+ *
+ */
