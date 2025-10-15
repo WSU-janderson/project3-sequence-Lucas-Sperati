@@ -19,7 +19,24 @@ int main() {
     mySequence[1] = "parameter";
     mySequence.push_back("hello");
     //mySequence[4] = "pointer";
-
+    mySequence.push_back("hi");
+    cout << mySequence << "|" << endl;
+    mySequence.pop_back();
+    cout << mySequence << "|" << endl;
+    mySequence.insert(1, "insert");
+    cout << mySequence << "|" << endl;
+    cout << "front is: " << mySequence.front() << endl;
+    cout << "back is: " << mySequence.back() << endl;
+    cout << "is empty: " << mySequence.empty() << endl;
+    cout << "size: " << mySequence.size() << endl;
+    mySequence.erase(2);
+    cout << mySequence << "|" << endl;
+    mySequence.push_back("one");
+    mySequence.push_back("two");
+    mySequence.push_back("three");
+    cout << mySequence << "|" << endl;
+    cout << "size: " << mySequence.size() << endl;
+    mySequence.erase(1,3);
     cout << mySequence << "|" << endl;
 
     Sequence mysequenceCopy(5);

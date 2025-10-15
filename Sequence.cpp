@@ -9,9 +9,9 @@
 #include "Sequence.h"
 #include <iostream>
 #include <exception>
+#include <stdexcept>
 
 using namespace std;
-#include <stdexcept>
 
 
 //makes empty sequence
@@ -67,7 +67,7 @@ Sequence::Sequence(const Sequence& s) {
     SequenceNode* originalNodePointer = s.head->next;
 
     //while loop that adds each item in the original sequence to the copy
-    // generated the while loop and I just went with it
+    // clion generated the while loop and I just went with it
 
     while (originalNodePointer != nullptr) {
         //makes a new node and puts the item inside the originalNodePointer inside

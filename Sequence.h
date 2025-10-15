@@ -87,10 +87,9 @@ public: //variables maybe
         SequenceNode* node = s.head;
         //while the node is valid
         while (node != nullptr) {
-            if (node->item != "") {
-                //adds the item to the os stream
-                os << node->item << " ";
-            }
+            //adds the item to the os stream
+            os << node->item << ", ";
+
             //moves to next node
             node = node->next;
         }
