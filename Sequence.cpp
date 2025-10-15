@@ -160,8 +160,12 @@ void Sequence::pop_back() {
     SequenceNode* currentNode = tail;
     //moves the tail back one node
     tail = tail->prev;
-    //sets the next node to the new tail to nullptr
-    tail->next = nullptr;
+    //if the size would equal one then tail->next would make an error
+    //since nullptr has no ->next
+    if (tail != nullptr) {
+        //sets the next node to the new tail to nullptr
+        tail->next = nullptr;
+    }
     //removes currentNode
     delete currentNode;
     //decreases size by one
