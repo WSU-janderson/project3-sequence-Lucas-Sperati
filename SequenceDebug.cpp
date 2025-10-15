@@ -16,9 +16,14 @@ int main() {
     Sequence mySequence(5);
     mySequence[0] = "function";
     mySequence[1] = "parameter";
-    mySequence[4] = "pointer";
-    cout << mySequence << endl;
+    mySequence.push_back("hello");
+    //mySequence[4] = "pointer";
 
+    cout << mySequence << "|" << endl;
+
+    Sequence mysequenceCopy(5);
+    mysequenceCopy = mySequence;
+    cout << mysequenceCopy << "|" << endl;
     return 0;
 }
 //test

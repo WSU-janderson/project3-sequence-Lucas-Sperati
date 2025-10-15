@@ -3,6 +3,8 @@
 #include <exception>
 
 using namespace std;
+#include <stdexcept>
+
 
 //makes empty sequence
 //default constructor
@@ -114,13 +116,17 @@ Sequence& Sequence::operator=(const Sequence& s) {
     return *this;
 }
 
+
 //Satisfies (position >=0 && position <= last_index())
 //The return value is a reference to the item at index position in the sequence
 //Throws an exception if the position is outside the bounds of the sequence
 std::string& Sequence::operator[] (size_t position) {
     //sets currentNode equal to the head
     SequenceNode* currentNode = head;
-
+    //throws exception if position is greater or equal to the size
+    if (position >= sz) {
+        throw std::invalid_argument("position is outside bounds of sequence");
+    }
     for (size_t i = 0; i < position; i++) {
         //moves through the sequence until the position is found and currentNode
         //is set to it
@@ -130,7 +136,7 @@ std::string& Sequence::operator[] (size_t position) {
 }
 
 //the value of the item is appended to the sequence
-void Sequence::push_back(std::string& item) {
+void Sequence::push_back(std::string item) {
     //sets currentNode equal to the item
     SequenceNode* currentNode = new SequenceNode(item);
     //sets tail's next slot equal to the currentNode
@@ -142,10 +148,14 @@ void Sequence::push_back(std::string& item) {
     //increases size by one
     sz += 1;
 }
-
+//todo
 //The item at the end of the sequence is deleted and the size of the sequence is
 //reduced by one. If the sequence was empty it throws an exception
 void Sequence::pop_back() {
+    //if the size is 0 it throws and exception
+    if (sz == 0) {
+        throw std::invalid_argument("sequence is empty!");
+    }
     //sets currentNode to the tail
     SequenceNode* currentNode = tail;
     //moves the tail back one node
@@ -157,7 +167,7 @@ void Sequence::pop_back() {
     //decreases size by one
     sz -= 1;
 }
-
+//todo
 //The position satisfies (position >=0 && position <= last_index())
 //The value of the item is inserted at position and the size of the
 //sequence is increased by one. Throws an exception if the position
@@ -209,14 +219,14 @@ void Sequence::insert(size_t position, std::string item) {
     }
 
 }
-
+//todo
 //returns the first element in the sequence. If the sequence is empty
 //it throws an exception
 std::string Sequence::front() const{
     //returns the item at the head
     return head->item;
 }
-
+//todo
 //returns the last element in the sequence. If the sequence is empty
 //it throws an exception.
 std::string Sequence::back() const{
@@ -262,6 +272,7 @@ void Sequence::clear() {
     //it works probably. Clion ain't ai either so im keeping it.
 }
 
+//todo
 //The item at position is removed and the memory is released
 //If it's called at an invalid position it throws an exception
 void Sequence::erase(size_t position) {
@@ -290,6 +301,7 @@ void Sequence::erase(size_t position) {
     sz -= 1;
 }
 
+//todo
 //The items in the sequence at (position ... (position + count - 1))
 //are deleted and their memory is released. If called with an invalid position
 //and/or count it throws an exception

@@ -60,7 +60,7 @@ public: //variables maybe
 
     //methods
     string& operator[] (size_t position);
-    void push_back(string& item);
+    void push_back(string item);
     void pop_back();
     void insert(size_t position, string item);
     string front() const;
@@ -71,7 +71,6 @@ public: //variables maybe
     void erase(size_t position);
     void erase(size_t position, size_t count);
 
-    //todo
     //Outputs all elements as a string to the output stream.
     //outputs whatever is in here when you call cout << mySequence << endl"
     friend ostream& operator<<(ostream& os, const Sequence& s) {
@@ -79,14 +78,14 @@ public: //variables maybe
         SequenceNode* node = s.head;
         //while the node is valid
         while (node != nullptr) {
-            //adds the item to the os stream
-            os << node->item << " ";
+            if (node->item != "") {
+                //adds the item to the os stream
+                os << node->item << " ";
+            }
             //moves to next node
             node = node->next;
         }
-        os << endl;
+        return os;
     }
-
-
 };
 
