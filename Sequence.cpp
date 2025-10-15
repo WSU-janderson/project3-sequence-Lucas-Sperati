@@ -1,3 +1,11 @@
+/**
+* Sequence.cpp
+ * Project 3
+ * CS 3100
+ * Lucas Sperati
+ *
+ * This file implements all the methods and the class that is used for the sequence.
+ */
 #include "Sequence.h"
 #include <iostream>
 #include <exception>

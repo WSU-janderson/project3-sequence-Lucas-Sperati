@@ -1,3 +1,12 @@
+/**
+* Sequence.h
+ * Project 3
+ * CS 3100
+ * Lucas Sperati
+ *
+ * This file declares all the methods and the class for sequence. It also contains the SequenceNode class and
+ * includes the friend ostream function.
+ */
 #include <ostream>
 #include <string>
 using namespace std;
