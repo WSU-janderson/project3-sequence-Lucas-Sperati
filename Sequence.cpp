@@ -148,7 +148,7 @@ void Sequence::push_back(std::string item) {
     //increases size by one
     sz += 1;
 }
-//todo
+
 //The item at the end of the sequence is deleted and the size of the sequence is
 //reduced by one. If the sequence was empty it throws an exception
 void Sequence::pop_back() {
@@ -171,12 +171,15 @@ void Sequence::pop_back() {
     //decreases size by one
     sz -= 1;
 }
-//todo
+
 //The position satisfies (position >=0 && position <= last_index())
 //The value of the item is inserted at position and the size of the
 //sequence is increased by one. Throws an exception if the position
 //is outside the bounds of the sequence
 void Sequence::insert(size_t position, std::string item) {
+    if (position >= sz) {
+        throw std::invalid_argument("position is outside bounds of sequence");
+    }
     SequenceNode* currentNode = head;
 
     //tail case
@@ -223,18 +226,26 @@ void Sequence::insert(size_t position, std::string item) {
     }
 
 }
-//todo
+
 //returns the first element in the sequence. If the sequence is empty
 //it throws an exception
 std::string Sequence::front() const{
+    //if the head is nullptr then the sequence is empty
+    if (head == nullptr) {
+        throw std::invalid_argument("head is empty!");
+    }
     //returns the item at the head
     return head->item;
 }
-//todo
+
 //returns the last element in the sequence. If the sequence is empty
 //it throws an exception.
 std::string Sequence::back() const{
     //returns the item at the tail
+    //if the tail is nullptr then it throws an exception
+    if (tail == nullptr) {
+        throw std::invalid_argument("tail is empty!");
+    }
     return tail->item;
 
 }
@@ -276,10 +287,14 @@ void Sequence::clear() {
     //it works probably. Clion ain't ai either so im keeping it.
 }
 
-//todo
+
 //The item at position is removed and the memory is released
 //If it's called at an invalid position it throws an exception
 void Sequence::erase(size_t position) {
+    //if the position is greater than size then its at an invalid position
+    if (position > sz) {
+        throw std::invalid_argument("position is at invalid position");
+    }
     SequenceNode* currentNode = head;
     //for loop to get the node at the position
     for (size_t i = 0; i < position; i++) {
@@ -305,11 +320,15 @@ void Sequence::erase(size_t position) {
     sz -= 1;
 }
 
-//todo
+
 //The items in the sequence at (position ... (position + count - 1))
 //are deleted and their memory is released. If called with an invalid position
 //and/or count it throws an exception
 void Sequence::erase(size_t position, size_t count) {
+    //if the count and position gets greater than size then it throws an exception
+    if (count + position >= sz) {
+        throw std::invalid_argument("position is at invalid position");
+    }
     //goes through each of the counts and then erases the node at the position
     /*A B C D (node)  (pos = 1, count = 2)
      *0 1 2 3 (position)
