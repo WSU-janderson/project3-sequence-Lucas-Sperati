@@ -27,11 +27,17 @@ int main() {
     mySequence.erase(3);
     mySequence.erase(3);
     cout << mySequence << "|" << endl;
+    mySequence.push_back("1");
+    mySequence.push_back("2");
+    mySequence.push_back("3");
+    cout << mySequence << "|" << endl;
+    mySequence.erase(2,3);
+    cout << mySequence << "|" << endl;
 
 
-    //Sequence mysequenceCopy(5);
-    //mysequenceCopy = mySequence;
-    //cout << mysequenceCopy << "|" << endl;
+    Sequence mysequenceCopy(5);
+    mysequenceCopy = mySequence;
+    cout << mysequenceCopy << "|" << endl;
     return 0;
 }
 //test

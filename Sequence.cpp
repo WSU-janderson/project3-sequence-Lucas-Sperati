@@ -359,6 +359,6 @@ void Sequence::erase(size_t position, size_t count) {
      *A points to D
      */
     for (size_t i = 0; i < count; i++) {
-        erase(position + i);
+        erase(position);
     }
 }
