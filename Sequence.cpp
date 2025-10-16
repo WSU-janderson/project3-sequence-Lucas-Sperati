@@ -145,6 +145,14 @@ std::string& Sequence::operator[] (size_t position) {
 
 //the value of the item is appended to the sequence
 void Sequence::push_back(std::string item) {
+    //if statement if size is 0 since nullptr cannot have ->next or ->tail
+    if (sz == 0) {
+        //sets the head and tail to the currentNode
+        SequenceNode* currentNode = new SequenceNode(item);
+        head = currentNode;
+        tail = currentNode;
+    }
+    else {
     //sets currentNode equal to the item
     SequenceNode* currentNode = new SequenceNode(item);
     //sets tail's next slot equal to the currentNode
@@ -154,6 +162,7 @@ void Sequence::push_back(std::string item) {
     //makes the currentNode the tail
     tail = currentNode;
     //increases size by one
+    }
     sz += 1;
 }
 
@@ -318,9 +327,14 @@ void Sequence::erase(size_t position) {
         SequenceNode* prevNode = currentNode->prev;
         //sets the next of prevNode to the next of currentNode
         prevNode->next = currentNode->next;
+
         //if it's deleting tail
         if (prevNode->next == nullptr) {
             tail = prevNode;
+        }
+        //otherwise sets the next and prev to prevNode
+        else {
+            currentNode->next->prev = prevNode;
         }
     }
     //deletes the currentNode to be deleted
